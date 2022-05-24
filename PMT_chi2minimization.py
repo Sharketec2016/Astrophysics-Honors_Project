@@ -1,5 +1,11 @@
-from distutils import archive_util
-from xml.dom import minicompat
+'''
+The purpose of this file was to compare the minimization method from scipy.optimize. Scipy.optimize.minimize tries to minimize the least squares method, using a range of different
+minimization methods. For the purpose of this work it was need to know whether or not a self implemented chi2 minimization would work. This file implements the same
+minimization technique, that being BFGS, to minimize the objective function of LSQ and Chi2. 
+'''
+
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
