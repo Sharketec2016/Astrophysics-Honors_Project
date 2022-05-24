@@ -2,6 +2,9 @@
 '''
 This file is used for importing, fitting, and presenting a fit of the PMT data. 
 This file uses ROOT for fitting and plotting models and histograms of the data.
+The fitting was done in pieces to extract more accurate results from the minimization methods.
+These values were then used in a parent model to perform a reduced chi2 test of the model
+to the data.
 
 '''
 # --------------------------------------------------------------#
