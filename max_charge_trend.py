@@ -1,3 +1,10 @@
+'''
+The purpose of this file is to take the extracted maximum charges from each pre-amplifier and plot a trend plot.
+
+
+'''
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy.core.fromnumeric import mean
