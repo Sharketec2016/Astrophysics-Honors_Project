@@ -1,3 +1,9 @@
+'''
+The purpose of this file was to input the csv waveform datasets for each test pulse setting, perform a background subtraction and then a total waveform integration
+to extract the charge from each test pulse sent through the equipment. This extracted charge, from both the input and output test pulse, were saved into their
+respective csv data files.
+'''
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
