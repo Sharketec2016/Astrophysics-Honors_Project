@@ -11,8 +11,9 @@ from scipy import stats
 from charge_RC import charge
 
 
-#The purpose of this code is to display and save the histograms for max charge and max amplitude
+#The purpose of this code is to display and save the histograms plotting the maximum charge extracted from each waveform.
 
+#for proper error handling for bins with counts less than 20, symmetric error bars are pulled from this method
 def error_bins(raw_data, fitted_data, raw_error):
     chi2_table = {0: [0.01, 1.29], 1: [0.27, 2.75], 2: [0.74, 4.25], 3: [1.10, 5.30], 4: [2.34, 6.78], 5: [2.75, 7.81],
                   6: [3.82, 9.28],
@@ -33,11 +34,10 @@ def error_bins(raw_data, fitted_data, raw_error):
                 raw_error[i] = lower
     return raw_error
 
-
 def gaus(x, a, mu, sigma):
     return (a*1/ (sigma * np.sqrt(2*np.pi)) ) * np.exp( -0.5 * ((x-mu)/sigma)**2 )
 
-
+#function used for minimizing. This means that, for a good fit, 
 def chisqfunc(arguments, data):
     bins = data.get('args')[0][0]
     counts = data.get('args')[0][1]
@@ -121,21 +121,4 @@ if __name__ == '__main__':
     print('LSQ chi2 value: {}'.format(np.sum( (counts - gaus(bins, *popt))**2/counts_errors**2)))
 
 #-----------------Plotting the histogram and models----------------#
-    
-    # (mu2, sig2) = norm.fit(data)
-    
-    # y = norm.pdf(bins, mu2, sig2)
-    # y2 = minimize(chisqfunc, [A, mu2, sig2], args={'args':arguments})
-    
-    
-    # fig, ax = plt.subplots(1, 2)
-    # ax[0].hist(data, bins=25, histtype='bar')
-    # ax[0].grid()
-    # ax[0].plot(bins, y, 'r--')
-    # ax[0].plot(bins, gaus(bins, *y2.x), 'b--.')
-    
-    # ax[1].errorbar(bins, counts, drawstyle='steps-mid', color='orange')
-    # ax[1].grid()
-    # ax[1].plot(bins, y, 'r--')
-    # plt.show()
     plotting(bins, counts, counts_errors, result, popt, result_var)
