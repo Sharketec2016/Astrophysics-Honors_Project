@@ -1,9 +1,11 @@
 #--------------------------------------------------------------#
 '''
-This file imports the electronic chain data. It takes the test pulse and output pulse and 
-computes a gain. A histogram is created for the gain, and then fitted using a gaussian curve
-Parameters are extracted from the fit if saving the values to a file is of interest.
-The fitted gain histogram is saved as a pdf
+This file imports the electronic chain data. It takes the test pulse and output pulse maximum charges extracted from the integration from a previous file Read_Test.py. 
+A histogram is created for the gain, and then fitted using a gaussian curve.
+Parameters can be extracted from the fit if saving the values to a file is of interest.
+The fitted gain histograms is saved as a pdf
+The method for fitting the curve was done utilizing Minuit from ROOT, a C/C++ library created by CERN. For the purpose of this analysis, the python wrapper
+of ROOT, PYROOT, was implemented to use the chi2 minimization method
 
 
 '''
